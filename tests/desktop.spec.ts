@@ -10,6 +10,7 @@ test.describe('Desktop tests', () => {
     const receiverId = '1';
     const transferAmount = '120';
     const transferTitle = 'Refund';
+    const expectedMessage = `Przelew wykonany! Jan Demobankowy - ${transferAmount},00PLN - ${transferTitle}`;
 
     //Act
     await page.goto(url);
@@ -25,9 +26,7 @@ test.describe('Desktop tests', () => {
     //await page.getByRole('link', { name: 'Przelew wykonany! Jan' }).click();
 
     //Assert
-    await expect(page.locator('#show_messages')).toHaveText(
-      `Przelew wykonany! Jan Demobankowy - ${transferAmount},00PLN - ${transferTitle}`,
-    );
+    await expect(page.locator('#show_messages')).toHaveText(expectedMessage);
   });
 
   test('successful phone top-up', async ({ page }) => {
@@ -37,6 +36,7 @@ test.describe('Desktop tests', () => {
     const userPassword = '12345678';
     const receiverPhone = '502 xxx xxx';
     const transferAmount = '50';
+    const expectedMessage = `Doładowanie wykonane! ${transferAmount},00PLN na numer ${receiverPhone}`;
 
     //Act
     await page.goto(url);
@@ -51,8 +51,6 @@ test.describe('Desktop tests', () => {
     await page.getByTestId('close-button').click();
 
     //Assert
-    await expect(page.locator('#show_messages')).toHaveText(
-      `Doładowanie wykonane! ${transferAmount},00PLN na numer ${receiverPhone}`,
-    );
+    await expect(page.locator('#show_messages')).toHaveText(expectedMessage);
   });
 });
