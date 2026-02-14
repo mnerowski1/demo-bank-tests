@@ -49,7 +49,7 @@ test.describe('Desktop tests', () => {
     await expect(page.locator('#show_messages')).toHaveText(expectedMessage);
   });
 
-    test('correct balance after successful phone top-up', async ({ page }) => {
+  test('correct balance after successful phone top-up', async ({ page }) => {
     //Arrange
     const receiverPhone = '502 xxx xxx';
     const transferAmount = '50';
