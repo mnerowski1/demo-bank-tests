@@ -2,5 +2,5 @@
 
 export const loginData = {
   userId: 'tester84',
-  password: '12345678',
+  userPassword: '12345678',
 };
