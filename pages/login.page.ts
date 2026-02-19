@@ -6,6 +6,7 @@ export class LoginPage {
   loginButton: Locator;
   loginErrorMessage: Locator;
   passwordErrorMessage: Locator;
+  userName: Locator;
 
   constructor(private page: Page) {
     this.loginInput = this.page.getByTestId('login-input');
@@ -13,6 +14,7 @@ export class LoginPage {
     this.loginButton = this.page.getByTestId('login-button');
     this.loginErrorMessage = this.page.getByTestId('error-login-id');
     this.passwordErrorMessage = this.page.getByTestId('error-login-password');
+    this.userName = this.page.getByTestId('user-name');
   }
 
   async login(userId: string, userPassword: string): Promise<void> {
