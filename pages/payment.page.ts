@@ -1,15 +1,16 @@
 import { Locator, Page } from '@playwright/test';
+import { SideMenuComponent } from '../common/side-menu-component';
 
 export class PaymentPage {
-  paymentPage: Locator;
   transferReceiverInput: Locator;
   transferAccountInput: Locator;
   transferAmountInput: Locator;
   executeTransferButton: Locator;
   confirmationMessage: Locator;
 
+  sideMenuComponent: SideMenuComponent;
+
   constructor(private page: Page) {
-    this.paymentPage = this.page.getByRole('link', { name: 'płatności' });
     this.transferReceiverInput = this.page.getByTestId('transfer_receiver');
     this.transferAccountInput = this.page.getByTestId('form_account_to');
     this.transferAmountInput = this.page.getByTestId('form_amount');
@@ -17,6 +18,7 @@ export class PaymentPage {
       name: 'wykonaj przelew',
     });
     this.confirmationMessage = this.page.locator('#show_messages');
+    this.sideMenuComponent = new SideMenuComponent(this.page);
   }
 
   async makePayment(

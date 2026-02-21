@@ -1,4 +1,5 @@
 import { expect, Locator, Page } from '@playwright/test';
+import { SideMenuComponent } from '../common/side-menu-component';
 
 export class DesktopPage {
   transferReceiverInput: Locator;
@@ -12,6 +13,8 @@ export class DesktopPage {
   topUpAgreementCheckbox: Locator;
   topUpExecuteButton: Locator;
   moneyValueInfo: Locator;
+
+  sideMenuComponent: SideMenuComponent;
 
   constructor(private page: Page) {
     this.transferReceiverInput = this.page.locator(
@@ -31,6 +34,7 @@ export class DesktopPage {
     );
     this.topUpExecuteButton = this.page.locator('#execute_phone_btn');
     this.moneyValueInfo = this.page.locator('#money_value');
+    this.sideMenuComponent = new SideMenuComponent(this.page);
   }
 
   async makeTransfer(
