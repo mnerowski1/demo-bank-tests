@@ -7,6 +7,7 @@ export class PaymentPage {
   transferAmountInput: Locator;
   executeTransferButton: Locator;
   confirmationMessage: Locator;
+  closeButton: Locator;
 
   sideMenuComponent: SideMenuComponent;
 
@@ -17,6 +18,7 @@ export class PaymentPage {
     this.executeTransferButton = this.page.getByRole('button', {
       name: 'wykonaj przelew',
     });
+    this.closeButton = this.page.getByTestId('close-button');
     this.confirmationMessage = this.page.locator('#show_messages');
     this.sideMenuComponent = new SideMenuComponent(this.page);
   }
@@ -30,5 +32,6 @@ export class PaymentPage {
     await this.transferAccountInput.fill(account);
     await this.transferAmountInput.fill(amount);
     await this.executeTransferButton.click();
+    await this.closeButton.click();
   }
 }
